@@ -30,3 +30,5 @@ There is src/utils/constants.js, where you can change some parameters before sta
 - BOARD_SIZE: total number of cells and number of cells in one row.
 - POPULAR_STAKES: popular stakes.
 - NUMBER_CELLS_IN_BET: valid number of selections.
+
+- You can use [GitHub Pages](https://khavrolev.github.io/lottery-react/).
