@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC, useContext } from "react";
+import { FC, MouseEvent, useContext } from "react";
 import { observer } from "mobx-react-lite";
 import classes from "./Board.module.css";
 import { IDiv } from "../../utils/interfaces";
@@ -9,13 +9,22 @@ import Context from "../../context";
 const Board: FC<IDiv> = ({ divClass }) => {
   const { store } = useContext(Context);
 
-  const handleClickOnCell = (cell: number) => {
-    const selectedCells = { ...store.selectedCells };
+  const handleClickOnCell = (event: MouseEvent<HTMLDivElement>) => {
+    if (!(event.target instanceof HTMLDivElement)) {
+      return;
+    }
 
-    if (selectedCells[cell]) {
-      delete selectedCells[cell];
+    const selectedCells = { ...store.selectedCells };
+    const { cell } = event.target.dataset;
+
+    if (!cell) {
+      return;
+    }
+
+    if (selectedCells[+cell]) {
+      delete selectedCells[+cell];
     } else {
-      selectedCells[cell] = true;
+      selectedCells[+cell] = true;
     }
 
     store.setSelectedCells(selectedCells);
@@ -32,7 +41,6 @@ const Board: FC<IDiv> = ({ divClass }) => {
             [classes.board__cell_selected]: store.selectedCells[i],
           })}
           data-cell={i}
-          onClick={() => handleClickOnCell(i)}
         >
           {i}
         </div>,
@@ -47,6 +55,7 @@ const Board: FC<IDiv> = ({ divClass }) => {
         gridTemplateColumns: `repeat(${BOARD_SIZE.cellsInRow}, auto)`,
       }}
       className={classNames(divClass, classes.board)}
+      onClick={(event) => handleClickOnCell(event)}
     >
       {getBoard()}
     </div>
