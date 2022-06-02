@@ -79,25 +79,27 @@ const Stakes: FC<IDiv> = ({ divClass }) => {
         />
       </div>
       <div className={classes.stakes__info}>
+        <div className={classes.stakes__ctrlbuttons}>
+          <button
+            className={classNames(
+              classes.stakes__ctrlbutton,
+              classes.stakes__ctrlbutton_luckypick,
+            )}
+            onClick={handleLuckyPickClick}
+          >
+            Lucky Pick
+          </button>
+          <button
+            className={classNames(
+              classes.stakes__ctrlbutton,
+              classes.stakes__ctrlbutton_bet,
+            )}
+            onClick={handleBetClick}
+          >
+            Place Bet
+          </button>
+        </div>
         <div className={classes.stakes__error}>{error}</div>
-        <button
-          className={classNames(
-            classes.stakes__ctrlbutton,
-            classes.stakes__ctrlbutton_luckypick,
-          )}
-          onClick={handleLuckyPickClick}
-        >
-          Lucky Pick
-        </button>
-        <button
-          className={classNames(
-            classes.stakes__ctrlbutton,
-            classes.stakes__ctrlbutton_bet,
-          )}
-          onClick={handleBetClick}
-        >
-          Place Bet
-        </button>
       </div>
     </div>
   );
