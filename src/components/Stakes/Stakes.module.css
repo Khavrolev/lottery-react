@@ -1,0 +1,151 @@
+.stakes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stakes__stake {
+  display: flex;
+}
+
+.stakes__stakebuttons {
+  margin: auto auto auto 0;
+}
+
+.stakes__stakebutton {
+  padding: 5px;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  background-color: #e6e6fa;
+}
+
+.stakes__stakebutton:hover {
+  background-color: #c7c7db;
+}
+
+.stakes__stakebutton:not(:last-child) {
+  margin-right: 5px;
+}
+
+.stakes__input {
+  padding: 5px;
+  width: 70px;
+  border: 1px solid #808080;
+  border-radius: 5px;
+}
+
+.stakes__info {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.stakes__error {
+  margin-right: auto;
+  color: #d62727;
+  font-weight: 700;
+}
+
+.stakes__ctrlbutton {
+  padding: 5px;
+  width: 70px;
+  border: 1px solid #808080;
+  border-radius: 5px;
+}
+
+.stakes__ctrlbutton:disabled {
+  background-color: #a5a5a5;
+  color: #808080;
+}
+
+.stakes__ctrlbutton:not(:last-child) {
+  margin-right: 5px;
+}
+
+.stakes__ctrlbutton_luckypick {
+  background-color: #ff9c78;
+}
+
+.stakes__ctrlbutton_luckypick:hover {
+  background-color: #f68258;
+}
+
+.stakes__ctrlbutton_bet {
+  background-color: #f5f5dc;
+}
+
+.stakes__ctrlbutton_bet:hover {
+  background-color: #faebd7;
+}
+
+@media (min-width: 769px) {
+  .stakes__stakebutton {
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .stakes__stakebutton:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .stakes__input {
+    padding: 10px;
+    width: 90px;
+    font-size: 18px;
+  }
+
+  .stakes__error {
+    font-size: 18px;
+  }
+
+  .stakes__ctrlbutton {
+    padding: 10px;
+    width: 90px;
+    font-size: 18px;
+  }
+
+  .stakes__ctrlbutton:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .stakes__stakebutton:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .stakes__error {
+    font-size: 20px;
+  }
+
+  .stakes__info {
+    margin-top: 20px;
+  }
+
+  .stakes__ctrlbutton:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .stakes__stakebutton {
+    padding: 15px;
+    font-size: 22px;
+  }
+
+  .stakes__input {
+    padding: 15px;
+    width: 110px;
+    font-size: 22px;
+  }
+
+  .stakes__error {
+    font-size: 22px;
+  }
+
+  .stakes__ctrlbutton {
+    padding: 15px;
+    width: 110px;
+    font-size: 22px;
+  }
+}
