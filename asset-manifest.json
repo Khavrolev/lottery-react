@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/lottery-react/static/css/main.b8606879.css",
-    "main.js": "/lottery-react/static/js/main.1745d229.js",
+    "main.css": "/lottery-react/static/css/main.fa5ac859.css",
+    "main.js": "/lottery-react/static/js/main.a157d503.js",
     "index.html": "/lottery-react/index.html",
-    "main.b8606879.css.map": "/lottery-react/static/css/main.b8606879.css.map",
-    "main.1745d229.js.map": "/lottery-react/static/js/main.1745d229.js.map"
+    "main.fa5ac859.css.map": "/lottery-react/static/css/main.fa5ac859.css.map",
+    "main.a157d503.js.map": "/lottery-react/static/js/main.a157d503.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8606879.css",
-    "static/js/main.1745d229.js"
+    "static/css/main.fa5ac859.css",
+    "static/js/main.a157d503.js"
   ]
 }
