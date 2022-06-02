@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/lottery-react/static/css/main.b1a25444.css",
+    "main.js": "/lottery-react/static/js/main.15a67c8d.js",
+    "index.html": "/lottery-react/index.html",
+    "main.b1a25444.css.map": "/lottery-react/static/css/main.b1a25444.css.map",
+    "main.15a67c8d.js.map": "/lottery-react/static/js/main.15a67c8d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1a25444.css",
+    "static/js/main.15a67c8d.js"
+  ]
+}
