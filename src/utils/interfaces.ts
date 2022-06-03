@@ -1,7 +1,7 @@
-export interface IDiv {
-  divClass: string;
+export interface HTMLElementProps {
+  classname: string;
 }
 
-export interface IKey {
+export interface KeyProps {
   [key: number]: boolean;
 }

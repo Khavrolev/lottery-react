@@ -9,10 +9,10 @@ import {
   POPULAR_STAKES,
 } from "../../utils/constants";
 import BetMessages from "../../utils/enum";
-import { IDiv } from "../../utils/interfaces";
+import { HTMLElementProps } from "../../utils/interfaces";
 import classes from "./Stakes.module.css";
 
-const Stakes: FC<IDiv> = ({ divClass }) => {
+const Stakes: FC<HTMLElementProps> = ({ classname }) => {
   const { store } = useContext(Context);
 
   const getStakeButtons = () => {
@@ -65,7 +65,7 @@ const Stakes: FC<IDiv> = ({ divClass }) => {
   };
 
   return (
-    <div className={classNames(divClass, classes.stakes)}>
+    <div className={classNames(classname, classes.stakes)}>
       <div className={classes.stakes__stake}>
         <div className={classes.stakes__stakebuttons}>{getStakeButtons()}</div>
         <input

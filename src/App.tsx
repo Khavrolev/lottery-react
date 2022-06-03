@@ -8,8 +8,8 @@ const App = () => {
     <div className={classes.wrapper}>
       <Popup />
       <h1 className={classes.wrapper__title}>Keno lottery</h1>
-      <Board divClass={classes.wrapper__board} />
-      <Stakes divClass={classes.wrapper__stakes} />
+      <Board classname={classes.wrapper__board} />
+      <Stakes classname={classes.wrapper__stakes} />
     </div>
   );
 };

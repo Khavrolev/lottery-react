@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { FC, MouseEvent, useContext } from "react";
 import { observer } from "mobx-react-lite";
 import classes from "./Board.module.css";
-import { IDiv } from "../../utils/interfaces";
+import { HTMLElementProps } from "../../utils/interfaces";
 import {
   BET_MESSAGES,
   BOARD_SIZE,
@@ -11,7 +11,7 @@ import {
 import Context from "../../context";
 import BetMessages from "../../utils/enum";
 
-const Board: FC<IDiv> = ({ divClass }) => {
+const Board: FC<HTMLElementProps> = ({ classname }) => {
   const { store } = useContext(Context);
 
   const handleClickOnCell = (event: MouseEvent<HTMLDivElement>) => {
@@ -65,7 +65,7 @@ const Board: FC<IDiv> = ({ divClass }) => {
       style={{
         gridTemplateColumns: `repeat(${BOARD_SIZE.cellsInRow}, auto)`,
       }}
-      className={classNames(divClass, classes.board)}
+      className={classNames(classname, classes.board)}
       onClick={(event) => handleClickOnCell(event)}
     >
       {getBoard()}

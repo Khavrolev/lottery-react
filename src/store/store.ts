@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { IKey } from "../utils/interfaces";
+import { KeyProps } from "../utils/interfaces";
 
 export default class Store {
   constructor() {
@@ -12,9 +12,9 @@ export default class Store {
     this.stake = data;
   }
 
-  selectedCells: IKey = {};
+  selectedCells: KeyProps = {};
 
-  setSelectedCells(data: IKey) {
+  setSelectedCells(data: KeyProps) {
     this.selectedCells = data;
   }
 
