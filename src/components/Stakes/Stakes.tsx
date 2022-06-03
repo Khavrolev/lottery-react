@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { FC, MouseEvent, useContext } from "react";
-import Context from "../../context";
+import StoreContext from "../../context";
 import getLuckyCells from "../../utils/algorithm";
 import {
   BET_MESSAGES,
@@ -13,7 +13,7 @@ import { HTMLElementProps } from "../../utils/interfaces";
 import classes from "./Stakes.module.css";
 
 const Stakes: FC<HTMLElementProps> = ({ classname }) => {
-  const { store } = useContext(Context);
+  const { store } = useContext(StoreContext);
 
   const getStakeButtons = () => {
     return POPULAR_STAKES.map((item, index) => (

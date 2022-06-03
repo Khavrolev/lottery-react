@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import Context from "./context";
+import StoreContext from "./context";
 import Store from "./store/store";
 
 const store = new Store();
@@ -11,8 +11,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Context.Provider value={{ store }}>
+    <StoreContext.Provider value={{ store }}>
       <App />
-    </Context.Provider>
+    </StoreContext.Provider>
   </React.StrictMode>,
 );

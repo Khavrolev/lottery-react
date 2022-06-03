@@ -1,0 +1,53 @@
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 20px;
+  aspect-ratio: 1 / 1;
+  border-radius: 5px;
+  user-select: none;
+  background-color: #8bebeb;
+  border: 3px solid #a9a6a6;
+}
+
+.cell:hover {
+  background-color: #67bdbd;
+  cursor: pointer;
+}
+
+.cell_selected {
+  background-color: #8a63de;
+  border: 3px solid #c1df3b;
+  color: #ffffff;
+}
+
+.cell_selected:hover {
+  background-color: #693ec6;
+}
+
+@media (min-width: 481px) {
+  .cell {
+    padding: 5px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 769px) {
+  .cell {
+    padding: 10px;
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .cell {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .cell {
+    padding: 15px;
+    font-size: 35px;
+  }
+}

@@ -5,47 +5,9 @@
   gap: 5px;
 }
 
-.board__cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 20px;
-  aspect-ratio: 1 / 1;
-  border-radius: 5px;
-  user-select: none;
-}
-
-.board__cell:hover {
-  cursor: pointer;
-}
-
-.board__cell_notselected {
-  background-color: #8bebeb;
-  border: 3px solid #a9a6a6;
-}
-
-.board__cell_notselected:hover {
-  background-color: #67bdbd;
-}
-
-.board__cell_selected {
-  background-color: #8a63de;
-  border: 3px solid #c1df3b;
-  color: #ffffff;
-}
-
-.board__cell_selected:hover {
-  background-color: #693ec6;
-}
-
 @media (min-width: 481px) {
   .board {
     gap: 10px;
-  }
-
-  .board__cell {
-    padding: 5px;
-    font-size: 20px;
   }
 }
 
@@ -53,30 +15,16 @@
   .board {
     gap: 15px;
   }
-
-  .board__cell {
-    padding: 10px;
-    font-size: 25px;
-  }
 }
 
 @media (min-width: 1025px) {
   .board {
     gap: 20px;
   }
-
-  .board__cell {
-    font-size: 30px;
-  }
 }
 
 @media (min-width: 1201px) {
   .board {
     gap: 25px;
-  }
-
-  .board__cell {
-    padding: 15px;
-    font-size: 35px;
   }
 }

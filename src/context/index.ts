@@ -5,6 +5,6 @@ interface State {
   store: Store;
 }
 
-const Context = createContext<State>({} as State);
+const StoreContext = createContext<State>({} as State);
 
-export default Context;
+export default StoreContext;

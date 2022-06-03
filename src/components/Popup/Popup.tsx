@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { MouseEvent, useContext } from "react";
-import Context from "../../context";
+import StoreContext from "../../context";
 import classes from "./Popup.module.css";
 
 const Popup = () => {
-  const { store } = useContext(Context);
+  const { store } = useContext(StoreContext);
 
   const handleClosePopup = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) {
