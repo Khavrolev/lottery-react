@@ -3,8 +3,13 @@ import { FC, MouseEvent, useContext } from "react";
 import { observer } from "mobx-react-lite";
 import classes from "./Board.module.css";
 import { IDiv } from "../../utils/interfaces";
-import { BOARD_SIZE } from "../../utils/constants";
+import {
+  BET_MESSAGES,
+  BOARD_SIZE,
+  NUMBER_CELLS_IN_BET,
+} from "../../utils/constants";
 import Context from "../../context";
+import BetMessages from "../../utils/enum";
 
 const Board: FC<IDiv> = ({ divClass }) => {
   const { store } = useContext(Context);
@@ -23,10 +28,16 @@ const Board: FC<IDiv> = ({ divClass }) => {
 
     if (selectedCells[+cell]) {
       delete selectedCells[+cell];
+    } else if (Object.keys(selectedCells).length === NUMBER_CELLS_IN_BET) {
+      store.setError(BET_MESSAGES[BetMessages.WrongNumber]);
+      return;
     } else {
       selectedCells[+cell] = true;
     }
 
+    if (store.error) {
+      store.setError(undefined);
+    }
     store.setSelectedCells(selectedCells);
   };
 

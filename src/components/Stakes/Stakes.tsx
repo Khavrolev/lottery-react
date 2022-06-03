@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { FC, MouseEvent, useContext, useState } from "react";
+import { FC, MouseEvent, useContext } from "react";
 import Context from "../../context";
 import getLuckyCells from "../../utils/algorithm";
 import {
@@ -14,8 +14,6 @@ import classes from "./Stakes.module.css";
 
 const Stakes: FC<IDiv> = ({ divClass }) => {
   const { store } = useContext(Context);
-
-  const [error, setError] = useState<string | undefined>();
 
   const getStakeButtons = () => {
     return POPULAR_STAKES.map((item, index) => (
@@ -33,17 +31,17 @@ const Stakes: FC<IDiv> = ({ divClass }) => {
     event.preventDefault();
 
     if (store.stake <= 0) {
-      setError(BET_MESSAGES[BetMessages.WrongStake]);
+      store.setError(BET_MESSAGES[BetMessages.WrongStake]);
       return;
     }
 
     if (Object.keys(store.selectedCells).length !== NUMBER_CELLS_IN_BET) {
-      setError(BET_MESSAGES[BetMessages.WrongNumber]);
+      store.setError(BET_MESSAGES[BetMessages.WrongNumber]);
       return;
     }
 
-    if (error) {
-      setError(undefined);
+    if (store.error) {
+      store.setError(undefined);
     }
 
     store.setModalOpened(true);
@@ -55,13 +53,13 @@ const Stakes: FC<IDiv> = ({ divClass }) => {
     try {
       store.setSelectedCells(getLuckyCells());
 
-      if (error) {
-        setError(undefined);
+      if (store.error) {
+        store.setError(undefined);
       }
     } catch (err) {
       console.error(err);
       if (err instanceof Error) {
-        setError(err.message);
+        store.setError(err.message);
       }
     }
   };
@@ -99,7 +97,7 @@ const Stakes: FC<IDiv> = ({ divClass }) => {
             Place Bet
           </button>
         </div>
-        <div className={classes.stakes__error}>{error}</div>
+        <div className={classes.stakes__error}>{store.error}</div>
       </div>
     </div>
   );

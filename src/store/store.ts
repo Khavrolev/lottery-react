@@ -23,4 +23,10 @@ export default class Store {
   setModalOpened(data: boolean) {
     this.modalOpened = data;
   }
+
+  error: string | undefined;
+
+  setError(data: string | undefined) {
+    this.error = data;
+  }
 }
