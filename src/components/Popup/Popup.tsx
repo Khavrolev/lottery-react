@@ -1,6 +1,7 @@
 import { MouseEvent } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
+  errorState,
   modalOpenedState,
   selectedCellsState,
   stakeState,
@@ -11,6 +12,7 @@ const Popup = () => {
   const [modalOpened, setModalOpened] = useRecoilState(modalOpenedState);
   const [stake, setStake] = useRecoilState(stakeState);
   const [selectedCells, setSelectedCells] = useRecoilState(selectedCellsState);
+  const setError = useSetRecoilState(errorState);
 
   const handleClosePopup = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) {
@@ -20,6 +22,7 @@ const Popup = () => {
     setModalOpened(false);
     setStake(0);
     setSelectedCells({});
+    setError(undefined);
   };
 
   return (

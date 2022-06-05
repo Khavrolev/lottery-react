@@ -23,20 +23,12 @@ const Stakes: FC<HTMLElementProps> = ({ classname }) => {
   const [selectedCells, setSelectedCells] = useRecoilState(selectedCellsState);
   const [error, setError] = useRecoilState(errorState);
 
-  const handleStakeClick = (item: number) => {
-    setStake(item);
-
-    if (error) {
-      setError(undefined);
-    }
-  };
-
   const getStakeButtons = () => {
     return POPULAR_STAKES.map((item, index) => (
       <button
         key={`${index}_${item}`}
         className={classes.stakes__stakebutton}
-        onClick={() => handleStakeClick(item)}
+        onClick={() => setStake(item)}
       >
         {item}
       </button>
@@ -54,10 +46,6 @@ const Stakes: FC<HTMLElementProps> = ({ classname }) => {
     if (Object.keys(selectedCells).length !== NUMBER_CELLS_IN_BET) {
       setError(BET_MESSAGES[BetMessages.WrongNumber]);
       return;
-    }
-
-    if (error) {
-      setError(undefined);
     }
 
     setModalOpened(true);

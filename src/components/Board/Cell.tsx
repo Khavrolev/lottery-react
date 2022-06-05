@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { FC, MouseEvent } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { errorState, selectedCellsState } from "../../store/store";
 import { BET_MESSAGES, NUMBER_CELLS_IN_BET } from "../../utils/constants";
 import BetMessages from "../../utils/enum";
@@ -12,7 +12,7 @@ interface CellProps {
 
 const Cell: FC<CellProps> = ({ cellNumber }) => {
   const [selectedCells, setSelectedCells] = useRecoilState(selectedCellsState);
-  const [error, setError] = useRecoilState(errorState);
+  const setError = useSetRecoilState(errorState);
 
   const handleClickOnCell = (event: MouseEvent<HTMLDivElement>) => {
     const { cell } = event.currentTarget.dataset;
@@ -33,10 +33,6 @@ const Cell: FC<CellProps> = ({ cellNumber }) => {
     }
 
     setSelectedCells(currentCells);
-
-    if (error) {
-      setError(undefined);
-    }
   };
 
   return (
