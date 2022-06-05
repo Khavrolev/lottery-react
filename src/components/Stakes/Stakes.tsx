@@ -23,12 +23,20 @@ const Stakes: FC<HTMLElementProps> = ({ classname }) => {
   const [selectedCells, setSelectedCells] = useRecoilState(selectedCellsState);
   const [error, setError] = useRecoilState(errorState);
 
+  const handleCkickState = (item: number) => {
+    setStake(item);
+
+    if (error) {
+      setError(undefined);
+    }
+  };
+
   const getStakeButtons = () => {
     return POPULAR_STAKES.map((item, index) => (
       <button
         key={`${index}_${item}`}
         className={classes.stakes__stakebutton}
-        onClick={() => setStake(item)}
+        onClick={() => handleCkickState(item)}
       >
         {item}
       </button>
