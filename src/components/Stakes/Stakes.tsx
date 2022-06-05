@@ -1,7 +1,12 @@
 import classNames from "classnames";
-import { observer } from "mobx-react-lite";
-import { FC, MouseEvent, useContext } from "react";
-import StoreContext from "../../context";
+import { FC, MouseEvent } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import {
+  errorState,
+  modalOpenedState,
+  selectedCellsState,
+  stakeState,
+} from "../../store/store";
 import getLuckyCells from "../../utils/algorithm";
 import {
   BET_MESSAGES,
@@ -13,14 +18,25 @@ import { HTMLElementProps } from "../../utils/interfaces";
 import classes from "./Stakes.module.css";
 
 const Stakes: FC<HTMLElementProps> = ({ classname }) => {
-  const { store } = useContext(StoreContext);
+  const setModalOpened = useSetRecoilState(modalOpenedState);
+  const [stake, setStake] = useRecoilState(stakeState);
+  const [selectedCells, setSelectedCells] = useRecoilState(selectedCellsState);
+  const [error, setError] = useRecoilState(errorState);
+
+  const handleStakeClick = (item: number) => {
+    setStake(item);
+
+    if (error) {
+      setError(undefined);
+    }
+  };
 
   const getStakeButtons = () => {
     return POPULAR_STAKES.map((item, index) => (
       <button
         key={`${index}_${item}`}
         className={classes.stakes__stakebutton}
-        onClick={() => store.setStake(item)}
+        onClick={() => handleStakeClick(item)}
       >
         {item}
       </button>
@@ -30,36 +46,36 @@ const Stakes: FC<HTMLElementProps> = ({ classname }) => {
   const handleBetClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    if (store.stake <= 0) {
-      store.setError(BET_MESSAGES[BetMessages.WrongStake]);
+    if (stake <= 0) {
+      setError(BET_MESSAGES[BetMessages.WrongStake]);
       return;
     }
 
-    if (Object.keys(store.selectedCells).length !== NUMBER_CELLS_IN_BET) {
-      store.setError(BET_MESSAGES[BetMessages.WrongNumber]);
+    if (Object.keys(selectedCells).length !== NUMBER_CELLS_IN_BET) {
+      setError(BET_MESSAGES[BetMessages.WrongNumber]);
       return;
     }
 
-    if (store.error) {
-      store.setError(undefined);
+    if (error) {
+      setError(undefined);
     }
 
-    store.setModalOpened(true);
+    setModalOpened(true);
   };
 
   const handleLuckyPickClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     try {
-      store.setSelectedCells(getLuckyCells());
+      setSelectedCells(getLuckyCells());
 
-      if (store.error) {
-        store.setError(undefined);
+      if (error) {
+        setError(undefined);
       }
     } catch (err) {
       console.error(err);
       if (err instanceof Error) {
-        store.setError(err.message);
+        setError(err.message);
       }
     }
   };
@@ -71,8 +87,8 @@ const Stakes: FC<HTMLElementProps> = ({ classname }) => {
         <input
           className={classes.stakes__input}
           type="number"
-          value={Number(store.stake).toString()}
-          onChange={(event) => store.setStake(+event.target.value)}
+          value={Number(stake).toString()}
+          onChange={(event) => setStake(+event.target.value)}
           required
         />
       </div>
@@ -97,10 +113,10 @@ const Stakes: FC<HTMLElementProps> = ({ classname }) => {
             Place Bet
           </button>
         </div>
-        <div className={classes.stakes__error}>{store.error}</div>
+        <div className={classes.stakes__error}>{error}</div>
       </div>
     </div>
   );
 };
 
-export default observer(Stakes);
+export default Stakes;
